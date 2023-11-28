@@ -1,5 +1,6 @@
 package com.qalegendbilling.testscript;
 
+import java.awt.AWTException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,6 +9,7 @@ import org.testng.annotations.Test;
 
 import com.qalegendbilling.automationcore.Base;
 import com.qalegendbilling.constants.ErrorMessages;
+import com.qalegendbilling.pages.AddNewProductPage1;
 import com.qalegendbilling.pages.AddUserPage1;
 import com.qalegendbilling.pages.HomePage1;
 import com.qalegendbilling.pages.LoginPage1;
@@ -20,6 +22,7 @@ public class AddUserTest1 extends Base {
 	HomePage1 home;
 	AddUserPage1 adduser;
 	UserPage1 user;
+	AddNewProductPage1 addnewproduct;
 
 	@Test
 
@@ -144,7 +147,7 @@ public class AddUserTest1 extends Base {
 	}
 
 	@Test
-	public void tc_010_verifyAddNewProduct() {
+	public void tc_010_verifyAddNewProduct() throws AWTException, InterruptedException {
 		List<ArrayList<String>> data = ExcelUtility.excelDataReader("LoginPage");
 		String expusername = data.get(0).get(1);
 		String exppassword = data.get(1).get(1);
@@ -154,8 +157,9 @@ public class AddUserTest1 extends Base {
 		login.enterUserPassword(exppassword);
 		home = login.clickonLoginButton();
 		home.ClickonProducts();
-		home.ClickonAddNewProduct();
-		home.ClickonBrowse();
+		addnewproduct = home.ClickonAddProduct();
+		addnewproduct.ClickonBrowse();
+		
 		
 
 	}

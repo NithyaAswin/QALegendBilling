@@ -13,6 +13,7 @@ import org.openqa.selenium.WebDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Parameters;
 
 import com.qalegendbilling.constants.Constants;
 import com.qalegendbilling.utilities.TestHelperUtility;
@@ -36,13 +37,14 @@ public class Base extends TestHelperUtility {
 		}
 	}
 
-	/*
-	 * @BeforeMethod(alwaysRun = true)
-	 * 
-	 * @Parameters({"browser"}) public void setUP(String browserName){ // String
-	 * browser= prop.getProperty("browser"); String url= prop.getProperty("url");
-	 * driver = DriverFactory.testInitialization(browserName); driver.get(url); }
-	 */
+//	@BeforeMethod(alwaysRun = true)
+//	@Parameters({ "browser" })
+//	public void setUP(String browserName) {
+//		String url = prop.getProperty("url");
+//		driver = DriverFactory.testInitialization(browserName);
+//		driver.get(url);
+//	}
+
 	@BeforeMethod(alwaysRun = true)
 	public void setUP() {
 		String browser = prop.getProperty("browser");
@@ -58,6 +60,6 @@ public class Base extends TestHelperUtility {
 			File screenshot = takeScreenshot.getScreenshotAs(OutputType.FILE);
 			FileUtils.copyFile(screenshot, new File("./Screenshots/" + result.getName() + ".png"));
 		}
-	//	driver.quit();
+		driver.quit();
 	}
 }

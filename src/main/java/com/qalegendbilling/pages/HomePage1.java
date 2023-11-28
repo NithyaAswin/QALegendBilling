@@ -50,12 +50,11 @@ public class HomePage1 extends TestHelperUtility {
 	@FindBy(xpath = _Products)
 	private WebElement Products;
 	
-	private final String _newProduct = "//i[@class='fa fa-cubes']//following-sibling::span";//Doubt
-	@FindBy(xpath = _newProduct)
-	private WebElement newProduct;
-	private final String _BrowseButton = "//span[@class='hidden-xs']//following-sibling::input";
-	@FindBy(xpath = _BrowseButton)
-	private WebElement BrowseButton;
+	private final String _addProduct = "//a[text()='Add Product']";//Doubt
+	@FindBy(xpath = _addProduct)
+	private WebElement addProduct;
+	
+	
 	public String getUserAccountName() {
 		wait.setHardWait();// to stop exec and wait for message
 		String actUserAccountName = page.getElementText(actUsernameField);
@@ -104,13 +103,6 @@ public class HomePage1 extends TestHelperUtility {
 		return new AddUserPage1(driver);
 	}
 	
-	
-	public void ClickonBrowse()
-	{
-		wait.waitForElementToBeVisible(driver, BrowseButton);
-		page.clickOnElement(BrowseButton);
-		
-	}
 	public String getHomePageTitle()
 	{
 		String homeTitle = page.getPageTitle(driver);
@@ -126,9 +118,10 @@ public class HomePage1 extends TestHelperUtility {
 		wait.waitForElementToBeVisible(driver, Products);
 		page.clickOnElement(Products);
 	}
-	public AddNewProductPage1 ClickonAddNewProduct()
+	public AddNewProductPage1 ClickonAddProduct()
 	{
-		page.clickOnElement(newProduct);
+		wait.waitForElementToBeVisible(driver,addProduct);
+		page.clickOnElement(addProduct);
 		return new AddNewProductPage1(driver);
 		
 	}

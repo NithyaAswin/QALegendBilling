@@ -8,15 +8,14 @@
 		<parameter name="browser" value="chrome" />
 		<groups>
 			<run>
-				<include name="Regression"/>
-				<exclude name="Smoke"/>
-				<exclude name="Sanity"/>	
+				<include name="Regression" />
+				<exclude name="Smoke" />
+				<exclude name="Sanity" />
 			</run>
 		</groups>
 		<classes>
-			<class name="com.qalegendbilling.testscript.HomeTest1"/>
-		<class name="com.qalegendbilling.testscript.LoginTest1"/>
-		
+			<class name="com.qalegendbilling.testscript.HomeTest1" />
+			<class name="com.qalegendbilling.testscript.LoginTest1" />
 		</classes>
 	</test>
 </suite> <!-- Suite -->
