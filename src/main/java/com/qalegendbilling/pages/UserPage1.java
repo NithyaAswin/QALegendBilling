@@ -51,6 +51,11 @@ public class UserPage1 extends TestHelperUtility {
 	@FindBy(xpath = _HomeField)
 	private WebElement HomeField;
 	
+	private final String _viewButton = "//a[@class='btn btn-xs btn-info']";
+	@FindBy(xpath = _viewButton)
+	private WebElement viewButton;
+	
+	
 	public void searchuser(String uName) {
 		wait.waitForElementToBeVisible(driver, usernameField);
 		page.enterText(usernameField, uName);
@@ -79,5 +84,10 @@ public class UserPage1 extends TestHelperUtility {
 	}
 	public void clickonokDeleteButton() {
 	   page.clickOnElement(okdeleteButton);
+	}
+	public ViewUserPage1 clickonViewButton()
+	{   wait.waitForElementToBeVisible(driver, viewButton);
+		page.clickOnElement(viewButton);
+		return new ViewUserPage1(driver);
 	}
 }

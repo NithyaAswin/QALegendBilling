@@ -14,6 +14,7 @@ import com.qalegendbilling.pages.AddUserPage1;
 import com.qalegendbilling.pages.HomePage1;
 import com.qalegendbilling.pages.LoginPage1;
 import com.qalegendbilling.pages.UserPage1;
+import com.qalegendbilling.pages.ViewUserPage1;
 import com.qalegendbilling.utilities.ExcelUtility;
 import com.qalegendbilling.utilities.RandomUtility;
 
@@ -23,6 +24,7 @@ public class AddUserTest1 extends Base {
 	AddUserPage1 adduser;
 	UserPage1 user;
 	AddNewProductPage1 addnewproduct;
+	ViewUserPage1 viewuser;
 
 	@Test
 
@@ -88,7 +90,6 @@ public class AddUserTest1 extends Base {
 		adduser.enterUsername(uName);
 		adduser.enterPassword(password);
 		adduser.enterConfirmPassword(confirmPassword);
-
 		adduser.enterSCPercent(expscpercent);
 		user = adduser.clickonSaveButton();
 		user.searchuser(uName);
@@ -159,8 +160,42 @@ public class AddUserTest1 extends Base {
 		home.ClickonProducts();
 		addnewproduct = home.ClickonAddProduct();
 		addnewproduct.ClickonBrowse();
-		
-		
+		}
+@Test
+public void tc_011_verifyViewUser()
+{
+	List<ArrayList<String>> data = ExcelUtility.excelDataReader("LoginPage");
+	String expusername = data.get(0).get(1);
+	String exppassword = data.get(1).get(1);
+	List<ArrayList<String>> userdata = ExcelUtility.excelDataReader("AddUserPage");
+	String expPrefix = userdata.get(0).get(1);
+	String expscpercent = userdata.get(1).get(1);
+	String fName = RandomUtility.getfName();
+	String lName = RandomUtility.getlName();
+	String uName = fName + lName;
+	String password = fName + "@123";
+	String confirmPassword = password;
+	String eMail = RandomUtility.getRandomEmail();
+	login = new LoginPage1(driver);
+	login.enterUsername(expusername);
+	login.enterUserPassword(exppassword);
+	home = login.clickonLoginButton();
+	home.clickonUserManagement();
+	user = home.clickonUserMgUsers();
+	adduser = home.clickAddButton();
+	adduser.enterPrefix(expPrefix);
+	adduser.enterFirstName(fName);
+	adduser.enterLastName(lName);
+	adduser.enterEmail(eMail);
+	adduser.enterUsername(uName);
+	adduser.enterPassword(password);
+	adduser.enterConfirmPassword(confirmPassword);
+	adduser.enterSCPercent(expscpercent);
+	user = adduser.clickonSaveButton();
+	user.searchuser(uName);
+	viewuser = user.clickonViewButton();
+    String actviewuser = viewuser.getviewUser();
+    Assert.assertEquals(actviewuser, uName, ErrorMessages.USER_NOT_FOUND);
+}
 
-	}
 }

@@ -17,7 +17,7 @@ import com.qalegendbilling.utilities.ExcelUtility;
 public class LoginTest1 extends Base {
 	LoginPage1 login;//object declare
 	HomePage1 home;
-	@Test
+	@Test(priority=1,enabled=true,description="Tc_001_verifyLoginPage_Credentials Home Page Title",groups = {"Smoke"})
 	public void tc_001_verifyLoginPage_Credentials()
 	{
 		List<ArrayList<String>> data = ExcelUtility.excelDataReader("LoginPage");
@@ -33,6 +33,7 @@ public class LoginTest1 extends Base {
 		Assert.assertEquals(actualuserAccountName, expuserAccountName,ErrorMessages.INVALID_EMAIL_ID);
 	}
 	/*@Test
+	 * DataProvider
 	public void tc_002_verifyLoginPage_Credentials()
 	{
 		List<ArrayList<String>> data = ExcelUtility.excelDataReader("LoginPage");

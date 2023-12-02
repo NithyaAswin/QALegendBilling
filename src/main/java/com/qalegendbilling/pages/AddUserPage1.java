@@ -66,6 +66,8 @@ public class AddUserPage1 extends TestHelperUtility {
 	@FindBy(xpath = _confirmPasswordError)
 	private WebElement confirmPasswordError;
 	
+	
+	
 	public void enterPrefix(String prefix) {
 		wait.waitForElementToBeVisible(driver, prefixfield);
 		page.enterText(prefixfield, prefix);
@@ -139,4 +141,5 @@ public class AddUserPage1 extends TestHelperUtility {
 		String actConfirmPasswordFieldErrorMessage = page.getElementText(confirmPasswordError);
 		return actConfirmPasswordFieldErrorMessage;
 	}
+	
 }
