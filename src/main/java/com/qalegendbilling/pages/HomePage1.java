@@ -108,10 +108,11 @@ public class HomePage1 extends TestHelperUtility {
 		String homeTitle = page.getPageTitle(driver);
 		return homeTitle;
 	}
-	public void ClickRolesunderUserManagement()
+	public RolePage1 ClickRolesunderUserManagement()
 	{
 		wait.waitForElementToBeVisible(driver, userManagementRoles);
 		page.clickOnElement(userManagementRoles);
+		return new RolePage1(driver);
 	}
 	public void ClickonProducts()
 	{

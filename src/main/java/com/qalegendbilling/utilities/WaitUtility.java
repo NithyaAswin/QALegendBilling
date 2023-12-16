@@ -28,9 +28,9 @@ public class WaitUtility {
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(IMPLICIT_WAIT));
 	}
 
-	public static void setPageLoadWait(WebDriver driver) {
-		driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(PAGE_LOAD_WAIT));
-	}
+//	public static void setPageLoadWait(WebDriver driver) {
+//		driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(PAGE_LOAD_WAIT));
+//	}
 
 	public void waitForElementToBeVisible(WebDriver driver, WebElement element) {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(EXPLICIT_WAIT));

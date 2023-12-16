@@ -9,6 +9,7 @@ import org.testng.annotations.Test;
 
 import com.qalegendbilling.automationcore.Base;
 import com.qalegendbilling.constants.ErrorMessages;
+import com.qalegendbilling.listeners.Retry;
 import com.qalegendbilling.pages.HomePage1;
 import com.qalegendbilling.pages.LoginPage1;
 import com.qalegendbilling.pages.ResetPage1;
@@ -17,7 +18,7 @@ import com.qalegendbilling.utilities.ExcelUtility;
 public class LoginTest1 extends Base {
 	LoginPage1 login;//object declare
 	HomePage1 home;
-	@Test(priority=1,enabled=true,description="Tc_001_verifyLoginPage_Credentials Home Page Title",groups = {"Smoke"})
+	@Test(priority=1,enabled=true,description="Tc_001_verifyLoginPage_Credentials",groups = {"Regression"},retryAnalyzer=Retry.class)
 	public void tc_001_verifyLoginPage_Credentials()
 	{
 		List<ArrayList<String>> data = ExcelUtility.excelDataReader("LoginPage");

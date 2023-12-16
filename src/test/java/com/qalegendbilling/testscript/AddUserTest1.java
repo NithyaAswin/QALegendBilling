@@ -107,7 +107,7 @@ public class AddUserTest1 extends Base {
 	}
 
 	@Test
-	public void verify_009_deleteUser() {
+	public void tc_009_verify_deleteUser() {
 		List<ArrayList<String>> data = ExcelUtility.excelDataReader("LoginPage");
 		String expusername = data.get(0).get(1);
 		String exppassword = data.get(1).get(1);
@@ -174,7 +174,7 @@ public void tc_011_verifyViewUser()
 	String lName = RandomUtility.getlName();
 	String uName = fName + lName;
 	String password = fName + "@123";
-	String confirmPassword = password;
+	String confirmPassword = fName + "@123";
 	String eMail = RandomUtility.getRandomEmail();
 	login = new LoginPage1(driver);
 	login.enterUsername(expusername);
@@ -196,6 +196,6 @@ public void tc_011_verifyViewUser()
 	viewuser = user.clickonViewButton();
     String actviewuser = viewuser.getviewUser();
     Assert.assertEquals(actviewuser, uName, ErrorMessages.USER_NOT_FOUND);
-}
+}                               
 
 }
